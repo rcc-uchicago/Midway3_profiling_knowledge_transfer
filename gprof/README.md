@@ -86,8 +86,8 @@ module load openmpi/4.1.8
 
 # For amd partition (AMD EPYC)
 module load gcc/12.2.0
-# Note: AOCC (AMD Optimizing Compiler) is NOT available on Midway3
-# Use GCC with appropriate tuning flags instead
+# Note: AOCC (AMD Optimizing Compiler) is available on Midway3 (aocc/3.1.0 and aocc/4.1.0)
+# You can use it on AMD nodes
 ```
 
 ---
@@ -174,8 +174,7 @@ mpicc -pg -O2 -march=x86-64 -mtune=znver2 -o mpi_example mpi_example.c -lm
 sbatch run_mpi.slurm
 ```
 
-**Note:** AOCC (AMD Optimizing C/C++ Compiler) is NOT available on Midway3.
-Use GCC with appropriate tuning flags for AMD processors instead.
+**Note:** AOCC (AMD Optimizing C/C++ Compiler) is available on Midway3 (aocc/3.1.0 and aocc/4.1.0) on AMD nodes.
 
 ---
 
@@ -397,7 +396,6 @@ Computational Scientist, RCC
 For questions or feedback about these materials:
 - **RCC Help**: help@rcc.uchicago.edu
 - **RCC Documentation**: https://docs.rcc.uchicago.edu/
-- **Office Hours**: Check RCC website for current schedule
 
 ---
 

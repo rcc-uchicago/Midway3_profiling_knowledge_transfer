@@ -5,6 +5,7 @@ paginate: true
 backgroundColor: #fff
 header: 'gprof Profiling Tutorial for HPC'
 footer: 'Midway3 @ UChicago RCC'
+math: mathjax
 ---
 
 <!-- _class: lead -->
@@ -355,9 +356,6 @@ Profile a matrix computation code, identify the hotspot, and optimize it.
 <!-- _class: lead -->
 
 # Questions?
-
-**Parmanand Sinha, Ph.D**
-Computational Scientist, RCC
 
 **Additional Resources:**
 - `man gprof`

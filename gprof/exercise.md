@@ -18,7 +18,7 @@ In this exercise, you will:
 First, let's compile the serial example with gprof flags:
 
 ```bash
-module load gcc/11.4.0  # Adjust version for your cluster
+module load gcc/12.2.0  
 
 # Compile with profiling enabled
 gcc -pg -O2 -o serial_example serial_example.c -lm
@@ -162,7 +162,7 @@ Hint: Consider O(n^3) vs O(n^2) operations
 ### Step 1: Compile MPI Example
 
 ```bash
-module load gcc/11.4.0 openmpi/4.1.5  # Adjust versions
+module load gcc/12.2.0 openmpi/4.1.5  # Adjust versions
 
 mpicc -pg -O2 -o mpi_example mpi_example.c -lm
 ```

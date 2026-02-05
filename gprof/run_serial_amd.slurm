@@ -17,7 +17,7 @@
 #   - AMD EPYC processors (40 nodes: midway3-0501 to midway3-0539, 0549)
 #   - For gprof profiling, GCC with -pg is recommended
 #   - Clang/LLVM is available but does NOT fully support -pg for gprof
-#   - AOCC (AMD Optimizing C/C++ Compiler) is NOT available on Midway3
+#   - AOCC (AMD Optimizing C/C++ Compiler) is available on Midway3 amd partitions (aocc/3.1.0 and 4.1.0)
 #
 # Compiler options for AMD partition:
 #   1. GCC with -pg (recommended for gprof)
