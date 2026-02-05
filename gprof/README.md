@@ -273,51 +273,6 @@ index % time    self  children    calls  name
 
 ---
 
-## Advanced: Converting Presentation to Slides
-
-The `presentation.md` file can be converted to slides using:
-
-### Option 1: Pandoc (Reveal.js)
-```bash
-module load pandoc  # if available on Midway3
-pandoc -t revealjs -s presentation.md -o presentation.html
-```
-
-### Option 2: Pandoc (PDF)
-```bash
-pandoc presentation.md -o presentation.pdf
-```
-
-### Option 3: Present directly with terminal tools
-```bash
-# Using less for basic viewing
-less presentation.md
-
-# Or use cat with paging
-cat presentation.md | less
-```
-
----
-
-## Comparing Caslake vs AMD Performance
-
-To compare performance between Intel and AMD nodes:
-
-```bash
-# Run on caslake
-sbatch run_serial.slurm
-# Results in: gprof_serial_report.txt
-
-# Run on amd
-sbatch run_serial_amd.slurm
-# Results in: gprof_serial_amd_report.txt
-
-# Compare the flat profiles
-diff gprof_serial_report.txt gprof_serial_amd_report.txt
-```
-
----
-
 ## Additional Resources
 
 ### Documentation
@@ -342,43 +297,7 @@ module avail vtune
 module avail perftools
 ```
 
----
 
-## Presentation Tips (for Presenters)
-
-### 30-Minute Timeline
-
-| Time | Content |
-|------|---------|
-| 0-5 min | Introduction: What/Why profiling |
-| 5-10 min | gprof overview and workflow |
-| 10-15 min | Serial code walkthrough + compilation demo |
-| 15-20 min | Output analysis + interpretation |
-| 20-25 min | MPI considerations + hands-on start |
-| 25-30 min | Q&A + next steps |
-
-### Demo Preparation
-
-Before the presentation:
-1. Compile both examples on Midway3
-2. Run serial example on caslake to confirm it works
-3. Prepare sample output for display if live demo fails
-4. Check partition availability: `sinfo -p caslake,amd`
-5. Have backup plain-text versions of key diagrams
-
-### Live Demo Commands
-
-```bash
-# Terminal 1: Watch job status
-watch -n 5 squeue -u $USER
-
-# Terminal 2: Submit and monitor
-sbatch run_serial.slurm
-tail -f gprof_serial_*.out
-
-# Terminal 3: Show results when ready
-cat gprof_serial_report.txt | head -50
-```
 
 ---
 
