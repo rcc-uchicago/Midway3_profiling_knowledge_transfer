@@ -1,0 +1,34 @@
+
+
+Debug: Parsing with PDT Parser.
+Executing> /software/src/pdtoolkit-3.25.1//x86_64/bin/cxxparse mandelbrot-mpi_final-v2.cc -D_OPENMP -I/software/src/tau-2.31/include -DPROFILING_ON -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_MPI -DTAU_UNIFY -DTAU_MPI_THREADED -DTAU_LINUX_TIMERS -DTAU_MPIGREQUEST -DTAU_MPIDATAREP -DTAU_MPIERRHANDLER -DTAU_MPICONSTCHAR -DTAU_MPIATTRFUNCTION -DTAU_MPITYPEEX -DTAU_MPIADDERROR -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DTAU_BFD -DTAU_MPIFILE -DHAVE_GNU_DEMANGLE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_UNWIND -DTAU_USE_LIBUNWIND -I/software/src/tau-2.31/x86_64/libunwind-1.3.1-gcc/include -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -DTAU_MPICH3 -DTAU_MPI_EXTENSIONS -DTAU_ELF_BFD -DTAU_DWARF -I/software/src/tau-2.31/x86_64/libdwarf-gcc/include -fopenmp -DTAU_OPENMP -DTAU_UNIFY -I/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/include -pthread -L/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/lib -Wl,-rpath -Wl,/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/lib -Wl,--enable-new-dtags -lmpi_cxx -lmpi -I/software/src/tau-2.31/include -I/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/include -pthread -L/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/lib -Wl,-rpath -Wl,/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/lib -Wl,--enable-new-dtags -lmpi_cxx -lmpi
+
+
+Debug: Instrumenting with TAU
+Executing> /software/src/tau-2.31/x86_64/bin/tau_instrumentor mandelbrot-mpi_final-v2.pdb mandelbrot-mpi_final-v2.cc -o mandelbrot-mpi_final-v2.inst.cc
+
+
+Debug: Compiling (Individually) with Instrumented Code
+Executing> g++ -std=c++98 -I. -c mandelbrot-mpi_final-v2.inst.cc -DPROFILING_ON -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_MPI -DTAU_UNIFY -DTAU_MPI_THREADED -DTAU_LINUX_TIMERS -DTAU_MPIGREQUEST -DTAU_MPIDATAREP -DTAU_MPIERRHANDLER -DTAU_MPICONSTCHAR -DTAU_MPIATTRFUNCTION -DTAU_MPITYPEEX -DTAU_MPIADDERROR -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DTAU_BFD -DTAU_MPIFILE -DHAVE_GNU_DEMANGLE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_UNWIND -DTAU_USE_LIBUNWIND -I/software/src/tau-2.31/x86_64/libunwind-1.3.1-gcc/include -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -DTAU_MPICH3 -DTAU_MPI_EXTENSIONS -DTAU_ELF_BFD -DTAU_DWARF -I/software/src/tau-2.31/x86_64/libdwarf-gcc/include -fopenmp -DTAU_OPENMP -DTAU_UNIFY -I/software/src/tau-2.31/include -I/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/include -pthread -L/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/lib -Wl,-rpath -Wl,/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/lib -Wl,--enable-new-dtags -lmpi_cxx -lmpi -o mandelbrot-mpi_final-v2.o
+
+
+Debug: Linking (Together) object files
+Executing> g++ mandelbrot-mpi_final-v2.o -std=c++98 @/software/src/tau-2.31/x86_64/lib/wrappers/gomp_wrapper/link_options.tau -L/software/src/tau-2.31/x86_64/lib -lTauMpi-mpi-pdt-openmp -I/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/include -pthread -I/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/lib -L/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/lib -Wl,-rpath -Wl,/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/lib -Wl,--enable-new-dtags -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi -L/software/src/tau-2.31/x86_64/lib -lTauMpi-mpi-pdt-openmp -L/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/lib -lmpi -lmpi_cxx -Wl,-rpath,/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/lib -L/software/src/tau-2.31/x86_64/lib -ltau-mpi-pdt-openmp -L/software/src/tau-2.31/x86_64/binutils-2.36/lib -L/software/src/tau-2.31/x86_64/binutils-2.36/lib64 -Wl,-rpath,/software/src/tau-2.31/x86_64/binutils-2.36/lib -Wl,-rpath,/software/src/tau-2.31/x86_64/binutils-2.36/lib64 -lbfd -liberty -lz -ldl -Wl,--export-dynamic -lrt -L/software/src/tau-2.31/x86_64/libunwind-1.3.1-gcc/lib -lunwind -Wl,-rpath,/software/src/tau-2.31/x86_64/libunwind-1.3.1-gcc/lib -ldl -L/software/src/tau-2.31/x86_64/libdwarf-gcc/lib -Wl,-rpath,/software/src/tau-2.31/x86_64/libdwarf-gcc/lib -ldwarf -lz -lelf -L/software/src/tau-2.31/x86_64/lib -lTauMpi-mpi-pdt-openmp -I/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/include -pthread -L/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/lib -Wl,-rpath -Wl,/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/lib -Wl,--enable-new-dtags -lmpi_cxx -lmpi -L/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/lib -lmpi -lmpi_cxx -Wl,-rpath,/software/openmpi-4.1.2-el8-x86_64+gcc-7.4.0/lib -ldl -lm -L/software/gcc-7.4.0-el8-x86_64/lib/gcc/x86_64-pc-linux-gnu/7.4.0/ -lstdc++ -lgcc_s -L/software/src/tau-2.31/x86_64/lib/static-mpi-pdt-openmp -fopenmp @/software/src/tau-2.31/x86_64/lib/wrappers/gomp_wrapper/link_options.tau -o a.out
+
+
+Debug: cleaning inst file
+Executing> /bin/rm -f mandelbrot-mpi_final-v2.inst.cc
+
+
+Debug: cleaning PDB file
+Executing> /bin/rm -f mandelbrot-mpi_final-v2.pdb
+
+
+=== Mandelbrot Set Generation Conditions ===
+Output Filename:    mandelbrot.pnm
+Max Iterations:     10000
+Center X:           -0.75
+Center Y:           0
+Zoom Level:         1
+AA Samples:         4
+============================================
