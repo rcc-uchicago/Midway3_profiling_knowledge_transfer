@@ -1,0 +1,2 @@
+You can mount multiple working directories in VSCode by loading this workspace rather then opening a single folder. 
+Note, that you need to adjust the paths.

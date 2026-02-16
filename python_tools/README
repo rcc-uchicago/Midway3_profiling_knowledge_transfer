@@ -1,0 +1,7 @@
+To run this code you can install 
+
+python=3.12.7
+pytest
+pyinstrument
+notebook
+numpy

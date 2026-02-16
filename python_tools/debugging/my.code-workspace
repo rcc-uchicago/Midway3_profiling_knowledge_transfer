@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"name": "Home",
+			"path": "."
+		},
+		{
+			"name": "Project",
+			"path": "../../project/rcc/lykhin"
+		},
+		{
+			"name": "OOD",
+			"path": "open-ondemand-software"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true,
+		"git.enabled": true,
+		"terminal.integrated.cwd": "/project/rcc/lykhin/",
+		"github-enterprise.uri": "https://git.rcc.uchicago.edu/",
+	}
+}
