@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH --job-name=mandelbrot
+#SBATCH --account=rcc-staff
+#SBATCH --time=01:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=8
+#SBATCH --mem=16GB
+
+cd $SLURM_SUBMIT_DIR
+
+ulimit -l unlimited
+
+module load openmpi/4.1.2+gcc-10.2.0
+
+# not to load the oneapi module to avoid conflict with the MPI module (openmpi)
+VTUNE='/software/intel/oneapi_hpc_2024.2/vtune/latest/bin64/vtune'
+
+mpirun -np 4 $VTUNE -collect hotspots -r output_dir_n4 ./test_mpi
+
+mpirun -np 8 $VTUNE -collect hotspots -r output_dir_n8 ./test_mpi
+
+
