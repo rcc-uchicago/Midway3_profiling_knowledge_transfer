@@ -3,7 +3,7 @@
 This project contains educational ML training loop in Python that mirrors every best-practice
 criterion from the CUDA C example, using CuPy as the GPU backend.
 
-NVIDIA NSight profiling tools **nsys** and **ncu** are eused to detect and
+NVIDIA NSight profiling tools **nsys** and **ncu** are used to detect and
 diagnose four common GPU training anti-patterns, using a simple 3-layer MLP on
 synthetic regression data:
 
@@ -145,16 +145,6 @@ NSYS_FLAGS="--trace=cuda,nvtx,cudnn,cublas \
             --cuda-memory-usage=true \
             --gpu-metrics-device=all \
             --force-overwrite=true"
-            
-
-| Flag | What it adds |
-|------|-------------|
-| `--trace=cuda,nvtx,cudnn,cublas` | CUDA kernels + NVTX ranges + cuDNN and cuBLAS API calls — maps kernels back to model operations |
-| `--trace=...,osrt` | OS Runtime: `write`/`fsync`/`pthread` syscalls — add only for v1 to see filesystem stalls |
-| `--cuda-memory-usage=true` | GPU memory allocation/free timeline — spots unexpected mid-loop allocations and peak memory spikes |
-| `--gpu-metrics-device=all` | Continuous hardware-sampled metrics: SM active rate, memory bandwidth, NVLink, **Tensor Core Activity** — visible as line charts in the GPU Metrics rows in nsys-ui |
-| `--force-overwrite=true` | Overwrites existing report files — convenient for iterative profiling |
-| `--delay=10` | Collection start after 10 seconds delay to exclude the warming up stage |
 
 # Baseline
 nsys profile --trace=cuda,nvtx,cublas,osrt --cuda-memory-usage=true --gpu-metrics-device=all --stats=true -o baseline \
@@ -180,6 +170,15 @@ nsys profile  $NSYS_FLAGS -o v4_roof \
 ncu --set full --kernel-name regex:gemm --launch-count 100 -o v4_roof_ncu \
      python ml_training_v4_roofline_gap.py
 ```
+
+| Flag | What it adds |
+|------|-------------|
+| `--trace=cuda,nvtx,cudnn,cublas` | CUDA kernels + NVTX ranges + cuDNN and cuBLAS API calls — maps kernels back to model operations |
+| `--trace=...,osrt` | OS Runtime: `write`/`fsync`/`pthread` syscalls — add only for v1 to see filesystem stalls |
+| `--cuda-memory-usage=true` | GPU memory allocation/free timeline — spots unexpected mid-loop allocations and peak memory spikes |
+| `--gpu-metrics-device=all` | Continuous hardware-sampled metrics: SM active rate, memory bandwidth, NVLink, **Tensor Core Activity** — visible as line charts in the GPU Metrics rows in nsys-ui |
+| `--force-overwrite=true` | Overwrites existing report files — convenient for iterative profiling |
+| `--delay=10` | Collection start after 10 seconds delay to exclude the warming up stage |
 
 **ncu runtime tip:** ncu replays each kernel multiple times to collect all
 hardware counter sets, making a full training run 10–100× slower than normal.
